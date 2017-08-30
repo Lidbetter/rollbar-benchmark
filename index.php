@@ -1,14 +1,11 @@
 <?php
 
-error_reporting(E_ALL & ~(E_NOTICE | E_STRICT));
+error_reporting(E_ALL & ~(E_NOTICE | E_USER_NOTICE | E_STRICT));
 
 require './vendor/autoload.php';
 
-// replace with your access token here (optional)
-$rollbarToken =  'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
-
 $config = [
-    'access_token' => $rollbarToken,
+    'access_token' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     'environment' => 'local-test',
     'root' => realpath('./'),
     'scrub_fields' => [
@@ -34,26 +31,21 @@ $config = [
     },
 ];
 
-$emptyArr = [];
-
 // rollbar 0.18.2
 \Rollbar::init($config);
+\Rollbar::$instance = new RollbarOldNoNetworkNotifier($config);
 
-$startTimeOld = microtime(true);
-for($i = 5000; $i > 0; --$i) {
-    $emptyArr['jim'];
-}
-$timeTakenOld = microtime(true) - $startTimeOld;
-
-usleep(500);
+Util::printNl('Rollbar Version: '.RollbarNotifier::VERSION);
+Util::printNl('undefinedIndex: ' . Util::timedRun(Tests::undefinedIndex()));
+Util::printNl('errorTriggered: ' . Util::timedRun(Tests::errorTriggered()));
+Util::printNl('reportException: ' . Util::timedRun(Tests::reportExceptionOld()));
+Util::printNl();
 
 // rollbar 1.3.1
-\Rollbar\Rollbar::init($config);
+\Rollbar\Rollbar::init(array_merge($config, ['sender' => new RollbarNewNullSender()]));
 
-$startTimeNew = microtime(true);
-for($i = 5000; $i > 0; --$i) {
-    $emptyArr['jim'];
-}
-$timeTakenNew = microtime(true) - $startTimeNew;
-
-echo "\n rollbar v0.18.2: $timeTakenOld \n rollbar  v1.3.1: $timeTakenNew \n\n";
+Util::printNl('Rollbar Version: latest (>= 1.3.1)');
+Util::printNl('undefinedIndex: ' . Util::timedRun(Tests::undefinedIndex()));
+Util::printNl('errorTriggered: ' . Util::timedRun(Tests::errorTriggered()));
+Util::printNl('reportException: ' . Util::timedRun(Tests::reportExceptionNew()));
+Util::printNl();

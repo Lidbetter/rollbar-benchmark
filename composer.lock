@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "78b5a1f6402a0a258c027eb34b3a719e",
+    "content-hash": "007aa804dac27bb66cd1da7a2a1a3b8f",
     "packages": [
         {
             "name": "fluent/logger",
@@ -114,7 +114,7 @@
         },
         {
             "name": "psr/log",
-            "version": "dev-master",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
@@ -226,7 +226,7 @@
     "stability-flags": {
         "lidbetter/rollbar": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
