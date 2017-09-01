@@ -34,9 +34,13 @@ class Tests
 
     public static function reportExceptionNew()
     {
-        return function() {
+        $extra = defined('\Rollbar\Utilities::IS_UNCAUGHT_KEY')
+            ? [\Rollbar\Utilities::IS_UNCAUGHT_KEY => true]
+            : [];
+
+        return function() use($extra) {
             for($i = self::$iterations; $i > 0; --$i) {
-                Rollbar\Rollbar::log(Level::ERROR, new Exception("Exception Thrown"), array(\Rollbar\Utilities::IS_UNCAUGHT_KEY => true));
+                Rollbar\Rollbar::log(Level::ERROR, new Exception("Exception Thrown"), $extra);
             }
         };
     }
