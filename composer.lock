@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "007aa804dac27bb66cd1da7a2a1a3b8f",
+    "content-hash": "35eee739fbc48b8a8a78c8ad8e97d83e",
     "packages": [
         {
             "name": "fluent/logger",
@@ -161,16 +161,16 @@
         },
         {
             "name": "rollbar/rollbar",
-            "version": "v1.3.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rollbar/rollbar-php.git",
-                "reference": "0fbaf82e8da7612e3f296d6e81ce3db1c8b3e951"
+                "reference": "bd159b4947935b7ed1c41905b447bb23a5fef692"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rollbar/rollbar-php/zipball/0fbaf82e8da7612e3f296d6e81ce3db1c8b3e951",
-                "reference": "0fbaf82e8da7612e3f296d6e81ce3db1c8b3e951",
+                "url": "https://api.github.com/repos/rollbar/rollbar-php/zipball/bd159b4947935b7ed1c41905b447bb23a5fef692",
+                "reference": "bd159b4947935b7ed1c41905b447bb23a5fef692",
                 "shasum": ""
             },
             "require": {
@@ -217,13 +217,14 @@
                 "logging",
                 "monitoring"
             ],
-            "time": "2017-08-02T19:32:28+00:00"
+            "time": "2017-09-13T06:06:13+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "rollbar/rollbar": 20,
         "lidbetter/rollbar": 20
     },
     "prefer-stable": true,

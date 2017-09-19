@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "rollbar/rollbar": ">= 1.3.1",
+        "rollbar/rollbar": "dev-master",
         "lidbetter/rollbar": "dev-master"
     },
     "autoload": {
